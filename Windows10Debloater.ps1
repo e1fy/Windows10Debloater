@@ -692,6 +692,13 @@ Write-Host "Initializing the installation of .NET 3.5..."
 DISM /Online /Enable-Feature /FeatureName:NetFx3 /All
 Write-Host ".NET 3.5 has been successfully installed!"
 
+# Adjust windows for best Performance
+Set-ItemProperty -Path "HKCU:\\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\VisualEffects" -Name AnimateMinMax -Value 0x00
+Set-ItemProperty -Path "HKCU:\\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\VisualEffects" -Name VisualFXSetting -Value 0x02
+Set-ItemProperty -Path "HKCU:\\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\VisualEffects" -Name VisualFXSetting -Value 0x02
+Set-ItemProperty -Path "HKCU:\\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\VisualEffects" -Name VisualEffects -Value 0x01
+
+# Reboot
 Write-Host "Unloading the HKCR drive..."
 Remove-PSDrive HKCR 
 Write-Host "Initiating reboot."
