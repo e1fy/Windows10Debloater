@@ -698,6 +698,11 @@ Set-ItemProperty -Path "HKCU:\\SOFTWARE\Microsoft\Windows\CurrentVersion\Explore
 Set-ItemProperty -Path "HKCU:\\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\VisualEffects" -Name VisualFXSetting -Value 0x02
 Set-ItemProperty -Path "HKCU:\\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\VisualEffects" -Name VisualEffects -Value 0x01
 
+# Install scoop,git,coreutils
+Invoke-WebRequest -useb "get.scoop.sh" | Invoke-Expression
+scoop install git
+scoop install coreutils
+
 # Reboot
 Write-Host "Unloading the HKCR drive..."
 Remove-PSDrive HKCR 
